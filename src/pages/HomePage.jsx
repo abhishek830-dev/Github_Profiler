@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSearchHistory } from "../features/search/hooks/useSearchHistory";
+import { useSearchHistory } from "../hooks/useSearchHistory";
 
 const HomePage = () => {
   const [username, setUsername] = useState("");

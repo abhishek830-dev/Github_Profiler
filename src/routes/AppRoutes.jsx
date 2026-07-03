@@ -6,6 +6,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import FollowerPage from "../pages/FollowersPage";
 import RepoPage from "../pages/RepoPage";
 import FollowingPage from "../pages/FollowingPage";
+import GistsPage from "../pages/GistsPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/users/:username/repos",
     element: <RepoPage />,
+  },
+  {
+    path: "/users/:username/gists",
+    element: <GistsPage />
   },
 ]);
 

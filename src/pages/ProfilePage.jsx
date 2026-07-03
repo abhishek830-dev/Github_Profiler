@@ -42,9 +42,7 @@ const ProfilePage = () => {
       <div className="stats">
         <p>
           Followers:{" "}
-          <Link to={`/users/${username}/followers`}>
-            {userData?.followers}
-          </Link>
+          <Link to={`/users/${username}/followers`}>{userData?.followers}</Link>
         </p>
         <p>
           Following:{" "}
@@ -53,6 +51,10 @@ const ProfilePage = () => {
         <p>
           Public Repos:{" "}
           <Link to={`/users/${username}/repos`}>{userData?.public_repos}</Link>
+        </p>
+        <p>
+          Gists:{" "}
+          <Link to={`/users/${username}/gists`}>{userData?.gists}</Link>
         </p>
       </div>
 

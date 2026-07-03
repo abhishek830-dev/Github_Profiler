@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState;
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   return (
     <Form>
@@ -16,4 +16,4 @@ const SearchBar = () => {
   );
 };
 
-export default Searchbar;
+export default SearchBar;
