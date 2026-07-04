@@ -1,36 +1,50 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchUserFollowers } from "../services/github";
+import NotFoundPage from "./NotFoundPage";
 
 const FollowerPage = () => {
   const { username } = useParams();
   const [followers, setFollowers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    fetchUserFollowers(username)
-      .then((data) => {
+    const loadFollower = async () => {
+      setLoading(true);
+      setError(false);
+      try {
+        const data = await fetchUserFollowers(username);
         setFollowers(data);
         setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error(err);
+        setError(true);
+        setFollowers(null);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    loadFollower();
   }, [username]);
 
   if (loading) return <div>Loading Followers...</div>;
+  if (error) return <NotFoundPage />;
 
   return (
     <div>
       <h2>{username}'s Followers:</h2>
-      {followers.map((follower) => (
-        <div key={follower.id}>
-          <img src={follower.avatar_url} width="50" alt={follower.login} />
-          <Link to={`/users/${follower.login}`}>{follower.login}</Link>
-        </div>
-      ))}
+      {followers.length === 0 ? (
+        <p>{username} don't have any followers.</p>
+      ) : (
+        followers.map((follower) => (
+          <div key={follower.id}>
+            <img src={follower.avatar_url} width="50" alt={follower.login} />
+            <Link to={`/users/${follower.login}`}>{follower.login}</Link>
+          </div>
+        ))
+      )}
     </div>
   );
 };

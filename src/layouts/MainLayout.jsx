@@ -1,0 +1,13 @@
+import { SearchBar } from "../features/search/SearchBar";
+import { Link } from "react-router-dom";
+
+export const Header = () => {
+  return (
+    <header>
+      <Link to="/">
+        <h1>Github Profiler</h1>
+      </Link>
+      <SearchBar />
+    </header>
+  );
+};

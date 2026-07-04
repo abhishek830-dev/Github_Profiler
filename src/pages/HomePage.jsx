@@ -7,16 +7,16 @@ const HomePage = () => {
   const navigate = useNavigate();
   const {history, addSearch} = useSearchHistory();
 
-  const handleSearch = () => {
-    if (username.trim()) {
-      addSearch(username);  //save in the search history
-      navigate(`/users/${username}`); // Redirect it
+  // const handleSearch = () => {
+  //   if (username.trim()) {
+  //     addSearch(username);  //save in the search history
+  //     navigate(`/users/${username}`); // Redirect it
 
-    }
-  };
+  //   }
+  // };
   return (
     <div>
-      <h1>Search Github Profile</h1>
+      {/* <h1>Search Github Profile</h1>
 
       <input
         type="text"
@@ -24,7 +24,7 @@ const HomePage = () => {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}>Search</button> */}
 
       <div>
         <h3>Recent Searches:</h3>
