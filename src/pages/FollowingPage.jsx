@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchUserFollowing } from "../services/github";
 import NotFoundPage from "./NotFoundPage";
+import "../components/card.css";
 
 const FollowingPage = () => {
   const { username } = useParams();
@@ -33,17 +34,24 @@ const FollowingPage = () => {
   if (error) return <NotFoundPage />;
 
   return (
-    <div>
+    <div className="grid-container">
       <h2>{username}'s Following:</h2>
       {following.length === 0 ? (
         <p>{username} not following anyone.</p>
       ) : (
-        following.map((following) => (
-          <div key={following.id}>
-            <img src={following.avatar_url} width="50" alt={following.login} />
-            <Link to={`/users/${following.login}`}>{following.login}</Link>
-          </div>
-        ))
+        <div className="repo-grid">
+          {" "}
+          {following.map((following) => (
+            <div key={following.id}>
+              <img
+                src={following.avatar_url}
+                width="50"
+                alt={following.login}
+              />
+              <Link to={`/users/${following.login}`}>{following.login}</Link>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

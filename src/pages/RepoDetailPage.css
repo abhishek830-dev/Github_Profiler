@@ -1,0 +1,36 @@
+.repo-container {
+    max-width: 600px;
+    margin: 40px auto; /* Centre mein lane ke liye */
+    padding: 30px;
+    border: 1px solid #d1d5da; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-box {
+    background: #f6f8fa;
+    padding: 15px; /* Thoda padding badhaya */
+    border-radius: 5px;
+    border: 1px solid #e1e4e8;
+    text-align: center;
+}
+
+.github-link {
+    display: block;
+    background: #24292e;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+}

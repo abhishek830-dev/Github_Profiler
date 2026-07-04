@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchGitHubUser } from "../services/github";
 import NotFoundPage from "./NotFoundPage";
 import { Link } from "react-router-dom";
+import "./ProfilePage.css";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -34,7 +35,7 @@ const ProfilePage = () => {
   if (error) return <NotFoundPage />;
 
   return (
-    <div>
+    <div className="profile-container">
       <h1>{userData?.name}</h1>
       <img src={userData?.avatar_url} alt={userData.login} width="100" />
       <p>{userData?.bio}</p>
@@ -53,16 +54,17 @@ const ProfilePage = () => {
           <Link to={`/users/${username}/repos`}>{userData?.public_repos}</Link>
         </p>
         <p>
-          Gists:{" "}
-          <Link to={`/users/${username}/gists`}>{userData?.gists}</Link>
+          Gists: <Link to={`/users/${username}/gists`}>{userData?.gists}</Link>
         </p>
       </div>
 
-      <p>Company: {userData?.company || "N/A"}</p>
-      <p>Location: {userData?.location || "N/A"}</p>
-      <a href={userData?.blog} target="_blank">
-        Website: {userData?.blog}
-      </a>
+      <div className="profile-stats">
+        <p>Company: {userData?.company || "N/A"}</p>
+        <p>Location: {userData?.location || "N/A"}</p>
+        <a href={userData?.blog} target="_blank">
+          Website: {userData?.blog}
+        </a>
+      </div>
     </div>
   );
 };

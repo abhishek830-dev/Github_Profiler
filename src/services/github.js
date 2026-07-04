@@ -55,3 +55,15 @@ export const fetchUserGists = async (username) => {
   }
   return response.json();
 };
+
+// RepoDetails
+export const fetchUserRepoDetails = async (username, repoName) => {
+  const response = await fetch(
+    `https://api.github.com/repos/${username}/${repoName}`,
+  );
+
+  if (!response.ok) {
+    throw new Error("Repo details not found");
+  }
+  return response.json();
+};

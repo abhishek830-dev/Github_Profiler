@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchUserRepository } from "../services/github";
 import NotFoundPage from "./NotFoundPage";
+import "./RepoPage.css";
 
 const RepositoryPage = () => {
   const { username } = useParams();
@@ -33,20 +34,23 @@ const RepositoryPage = () => {
   if (error) return <NotFoundPage />;
   //console.log("Repository", Repository);
   return (
-    <div>
+    <div className="repo-page-container">
       <h2>{username}'s Repository:</h2>
       {Repository.length === 0 ? (
         <p>{username} don't have any repository</p>
       ) : (
-        Repository.map((Repository) => (
-          <div key={Repository.id}>
-            <img src={Repository.avatar_url} width="50" alt={Repository.name} />
-            <p>{Repository.name}</p>
-            <Link to={`/users/${Repository.owner.login}`}>
-              {Repository.name}
-            </Link>
-          </div>
-        ))
+        <div className="repo-grid">
+          {Repository.map((repo) => (
+            <div key={repo.id} className="repo-card">
+              <br />
+              {/* <img src={repo.avatar_url} width="50" alt={repo.name} /> */}
+              {/* <p>{repo.name}</p> */}
+              <Link to={`/users/${username}/repos/${repo.name}`}>
+                <h3>{repo.name}</h3>
+              </Link>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
