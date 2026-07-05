@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchGitHubUser } from "../services/github";
 import NotFoundPage from "./NotFoundPage";
 import { Link } from "react-router-dom";
-import "./ProfilePage.css";
+import "./ProfilePage.style.css";
 
 const ProfilePage = () => {
   const { username } = useParams();
