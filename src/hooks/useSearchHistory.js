@@ -1,18 +1,23 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
 
 export const useSearchHistory = () => {
-    const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState([]);
 
-    useEffect(() => {
-        const saved = JSON.parse(localStorage.getItem('searchHistory') || '[]');
-        setHistory(saved);
-    }, []);
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("searchHistory") || "[]");
+    setHistory(saved);
+  }, []);
 
-    const addSearch = (username) => {
-        const updated = [username, ...history.filter(u => u !== username)].slice(0, 5);
-        setHistory(updated);
-        localStorage.setItem('searchHistory', JSON.stringify(updated));
-    };
+  const addSearch = (username) => {
+    setHistory((prev) => {
+      const updated = [username, ...prev.filter((u) => u !== username)].slice(0,5);
+      localStorage.setItem("searchHistory", JSON.stringify(updated));
 
-    return {history, addSearch};
+      return updated;
+    });
+  };
+  return {
+    history,
+    addSearch,
+  };
 };

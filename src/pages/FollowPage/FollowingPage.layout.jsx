@@ -1,11 +1,19 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchUserFollowing } from "../services/github";
-import NotFoundPage from "./NotFoundPage";
-import "../components/card.css";
+import { fetchUserFollowing } from "../../services/github";
+import NotFoundPage from "../NotFoundPage";
+
+import {
+  GridContainer,
+  RepoGrid,
+  Card,
+  CardImage,
+  UserLink,
+} from "../../components/RepositoryGrid.styles";
 
 const FollowingPage = () => {
   const { username } = useParams();
+
   const [following, setFollowing] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -14,14 +22,14 @@ const FollowingPage = () => {
     const loadFollowing = async () => {
       setLoading(true);
       setError(false);
+
       try {
         const data = await fetchUserFollowing(username);
         setFollowing(data);
-        setLoading(false);
       } catch (err) {
         console.error(err);
         setError(true);
-        setFollowing(null);
+        setFollowing([]);
       } finally {
         setLoading(false);
       }
@@ -34,26 +42,23 @@ const FollowingPage = () => {
   if (error) return <NotFoundPage />;
 
   return (
-    <div className="grid-container">
-      <h2>{username}'s Following:</h2>
+    <GridContainer>
+      <h2>{username}'s Following</h2>
+
       {following.length === 0 ? (
-        <p>{username} not following anyone.</p>
+        <p>{username} isn't following anyone.</p>
       ) : (
-        <div className="repo-grid">
-          {" "}
-          {following.map((following) => (
-            <div key={following.id}>
-              <img
-                src={following.avatar_url}
-                width="50"
-                alt={following.login}
-              />
-              <Link to={`/users/${following.login}`}>{following.login}</Link>
-            </div>
+        <RepoGrid>
+          {following.map((user) => (
+            <Card key={user.id}>
+              <CardImage src={user.avatar_url} alt={user.login} />
+
+              <UserLink to={`/users/${user.login}`}>{user.login}</UserLink>
+            </Card>
           ))}
-        </div>
+        </RepoGrid>
       )}
-    </div>
+    </GridContainer>
   );
 };
 

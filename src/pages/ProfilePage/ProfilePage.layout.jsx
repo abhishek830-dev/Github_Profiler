@@ -1,9 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchGitHubUser } from "../services/github";
-import NotFoundPage from "./NotFoundPage";
-import { Link } from "react-router-dom";
-import "./ProfilePage.style.css";
+import { fetchGitHubUser } from "../../services/github";
+import NotFoundPage from "../NotFoundPage";
+import {
+  ProfileContainer,
+  ProfileHeader,
+  ProfileAvatar,
+  StatsRow,
+  ProfileStats,
+} from "./ProfilePage.style";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -35,12 +40,16 @@ const ProfilePage = () => {
   if (error) return <NotFoundPage />;
 
   return (
-    <div className="profile-container">
-      <h1>{userData?.name}</h1>
-      <img src={userData?.avatar_url} alt={userData.login} width="100" />
-      <p>{userData?.bio}</p>
+    <ProfileContainer>
+      <ProfileHeader>
+        <ProfileAvatar src={userData?.avatar_url} alt={userData.login} />
+        <div>
+          <h1>{userData?.name}</h1>
+          <p>{userData?.bio}</p>
+        </div>
+      </ProfileHeader>
 
-      <div className="stats">
+      <StatsRow>
         <p>
           Followers:{" "}
           <Link to={`/users/${username}/followers`}>{userData?.followers}</Link>
@@ -56,16 +65,16 @@ const ProfilePage = () => {
         <p>
           Gists: <Link to={`/users/${username}/gists`}>{userData?.gists}</Link>
         </p>
-      </div>
+      </StatsRow>
 
-      <div className="profile-stats">
+      <ProfileStats>
         <p>Company: {userData?.company || "N/A"}</p>
         <p>Location: {userData?.location || "N/A"}</p>
-        <a href={userData?.blog} target="_blank">
+        <a href={userData?.blog} target="_blank" rel="noreferrer">
           Website: {userData?.blog}
         </a>
-      </div>
-    </div>
+      </ProfileStats>
+    </ProfileContainer>
   );
 };
 export default ProfilePage;

@@ -1,13 +1,13 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import RootLayout from "../layouts/RootLayout";
-import HomePage from "../pages/HomePage";
-import ProfilePage from "../pages/ProfilePage";
+import HomePage from "../pages/HomePage/HomePage.layout";
+import ProfilePage from "../pages/ProfilePage/ProfilePage.layout";
 import NotFoundPage from "../pages/NotFoundPage";
-import FollowerPage from "../pages/FollowersPage";
-import RepoPage from "../pages/RepoPage";
-import FollowingPage from "../pages/FollowingPage";
+import FollowerPage from "../pages/FollowPage/FollowersPage.layout";
+import RepoPage from "../pages/RepoPage/RepoPage.layout";
+import FollowingPage from "../pages/FollowPage/FollowingPage.layout";
 import GistsPage from "../pages/GistsPage";
-import RepoDetailPage from "../pages/RepoDetailPage";
+import RepoDetailPage from "../pages/RepoDetailPage/RepoDetailPage.layout";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       { path: "users/:username/repos", element: <RepoPage /> },
       { path: "users/:username/gists", element: <GistsPage /> },
       { path: "*", element: <NotFoundPage /> },
-      { path: "users/:username/repos/:repoName", element: <RepoDetailPage />}
+      { path: "users/:username/repos/:repoName", element: <RepoDetailPage /> },
     ],
   },
 ]);
