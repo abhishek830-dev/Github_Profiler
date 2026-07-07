@@ -35,13 +35,3 @@ export const RepoCard = styled.div`
     margin: 10px 0;
   }
 `;
-
-export const RepoTitle = styled.h3`
-  margin-top: 0;
-  color: #0366d6;
-`;
-
-export const RepoDescription = styled.p`
-  color: #57606a;
-  margin: 10px 0;
-`;

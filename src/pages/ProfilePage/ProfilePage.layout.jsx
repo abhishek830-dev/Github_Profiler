@@ -36,13 +36,13 @@ const ProfilePage = () => {
     loadUser();
   }, [username]);
 
-useEffect(() => {
-  if (!userData) return;
+  useEffect(() => {
+    if (!userData) return;
 
-  document.title = userData.name
-    ? `${userData.name} (${userData.login}) | GitHub Profiler`
-    : `${userData.login} | GitHub Profiler`;
-}, [userData]);
+    document.title = userData.name
+      ? `${userData.name} (${userData.login}) | GitHub Profiler`
+      : `${userData.login} | GitHub Profiler`;
+  }, [userData]);
 
   if (loading) return <div>Loading....</div>;
   if (error) return <NotFoundPage />;
@@ -71,7 +71,7 @@ useEffect(() => {
           <Link to={`/users/${username}/repos`}>{userData?.public_repos}</Link>
         </p>
         <p>
-          Gists: <Link to={`/users/${username}/gists`}>{userData?.gists}</Link>
+          Gists: <Link to={`/users/${username}/gists`}>{userData?.public_gists}</Link>
         </p>
       </StatsRow>
 
