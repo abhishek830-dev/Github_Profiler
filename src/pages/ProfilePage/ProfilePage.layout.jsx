@@ -36,6 +36,14 @@ const ProfilePage = () => {
     loadUser();
   }, [username]);
 
+useEffect(() => {
+  if (!userData) return;
+
+  document.title = userData.name
+    ? `${userData.name} (${userData.login}) | GitHub Profiler`
+    : `${userData.login} | GitHub Profiler`;
+}, [userData]);
+
   if (loading) return <div>Loading....</div>;
   if (error) return <NotFoundPage />;
 

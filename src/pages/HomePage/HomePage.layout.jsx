@@ -2,11 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import {HomePageContainer, Card, PageTitle, HistoryList, HistoryButton, EmptyMessage} from "./HomePage.styles";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const { history } = useSearchHistory();
+
+  useEffect(() => {
+    document.title = "Github Profiler";
+  }, []);
 
   return (
     <HomePageContainer>

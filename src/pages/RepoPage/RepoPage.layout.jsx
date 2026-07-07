@@ -30,6 +30,10 @@ const RepositoryPage = () => {
     loadRepo();
   }, [username]);
 
+  useEffect(() => {
+  document.title = `${username}'s Repositories | GitHub Profiler`;
+}, [username]);
+
   if (loading) return <div>Loading Repository...</div>;
   if (error) return <NotFoundPage />;
   //console.log("Repository", Repository);

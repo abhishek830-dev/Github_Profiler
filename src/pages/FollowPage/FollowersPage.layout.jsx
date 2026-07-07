@@ -38,6 +38,10 @@ const FollowerPage = () => {
     loadFollower();
   }, [username]);
 
+  useEffect(() => {
+    document.title = `${username}'s Followers | Github Profiler`;
+  }, [username]);
+
   if (loading) return <div>Loading Followers...</div>;
   if (error) return <NotFoundPage />;
 
