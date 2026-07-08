@@ -1,6 +1,14 @@
-import { SearchBar } from "../features/search/SearchBar.layout.jsx"; 
 import { FaGithub } from "react-icons/fa";
-import { HeaderContainer, Logo } from "./Header.styles";
+import { Search } from "lucide-react";
+
+import { SearchBar } from "../features/search/SearchBar.layout";
+
+import {
+  HeaderContainer,
+  Logo,
+  SearchWrapper,
+  SearchIcon,
+} from "./Header.styles";
 
 export const Header = () => {
   return (
@@ -9,9 +17,14 @@ export const Header = () => {
         <FaGithub size={28} />
         <h1>GitHub Profiler</h1>
       </Logo>
-      <div className="search-wrapper">
+
+      <SearchWrapper>
+        <SearchIcon>
+          <Search size={16} strokeWidth={2} />
+        </SearchIcon>
+
         <SearchBar />
-      </div>
+      </SearchWrapper>
     </HeaderContainer>
   );
 };
