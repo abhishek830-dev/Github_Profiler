@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchGitHubUser } from "../../services/github";
 import NotFoundPage from "../NotFoundPage";
+import BackButton from "../../components/common/BackButton";
 import {
   ProfileContainer,
   ProfileHeader,
@@ -49,6 +50,7 @@ const ProfilePage = () => {
 
   return (
     <ProfileContainer>
+      <BackButton />
       <ProfileHeader>
         <ProfileAvatar src={userData?.avatar_url} alt={userData.login} />
         <div>

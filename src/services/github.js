@@ -8,13 +8,17 @@ export const fetchGitHubUser = async (username) => {
 
 // Followers
 export const fetchUserFollowers = async (username) => {
-  const { data } = await githubapi.get(`/users/${username}/followers?per_page=100`);
+  const { data } = await githubapi.get(
+    `/users/${username}/followers?per_page=100`,
+  );
   return data;
 };
 
-// Following       
+// Following
 export const fetchUserFollowing = async (username) => {
-  const { data } = await githubapi.get(`/users/${username}/following?per_page=100`);
+  const { data } = await githubapi.get(
+    `/users/${username}/following?per_page=100`,
+  );
   return data;
 };
 

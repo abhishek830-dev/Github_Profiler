@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchUserRepoDetails } from "../../services/github";
 import NotFoundPage from "../NotFoundPage";
+import BackButton from "../../components/common/BackButton";
 import {
   RepoContainer,
   StatsGrid,
@@ -39,6 +40,7 @@ const RepoDetailPage = () => {
 
   return (
     <RepoContainer>
+      <BackButton />
       <h1>{repoDetail.name}</h1>
       <p>{repoDetail.description || "No description provided."}</p>
 

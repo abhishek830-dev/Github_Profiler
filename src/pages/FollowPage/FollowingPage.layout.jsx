@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchUserFollowing } from "../../services/github";
 import NotFoundPage from "../NotFoundPage";
+import BackButton from "../../components/common/BackButton";
 
 import {
   GridContainer,
@@ -47,6 +48,7 @@ const FollowingPage = () => {
 
   return (
     <GridContainer>
+      <BackButton />
       <h2>{username}'s Following</h2>
 
       {following.length === 0 ? (

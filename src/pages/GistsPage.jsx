@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchUserGists } from "../services/github";
 import NotFoundPage from "./NotFoundPage";
 import { RepoCard, RepoGrid, RepoPageContainer } from "./RepoPage/RepoPage.style";
+import BackButton from "../components/common/BackButton";
 
 const GistsPage = () => {
   const { username } = useParams();
@@ -40,6 +41,7 @@ const GistsPage = () => {
 
   return (
     <RepoPageContainer>
+      <BackButton />
       <h2>{username}'s Gists:</h2>
       <RepoGrid>
         {Gists.map((gist) => {

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchUserRepository } from "../../services/github.js";
 import NotFoundPage from "../NotFoundPage.jsx";
 import { RepoPageContainer, RepoGrid, RepoCard } from "./RepoPage.style.js";
+import BackButton from "../../components/common/BackButton";
 
 const RepositoryPage = () => {
   const { username } = useParams();
@@ -39,6 +40,7 @@ const RepositoryPage = () => {
   //console.log("Repository", Repository);
   return (
     <RepoPageContainer>
+      <BackButton />
       <h2>{username}'s Repository:</h2>
       {Repository.length === 0 ? (
         <p>{username} don't have any repository</p>
