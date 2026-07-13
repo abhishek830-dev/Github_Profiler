@@ -6,7 +6,7 @@ import { useSearchHistory } from "../../hooks/useSearchHistory";
 import {
   HomePageContainer,
   Content,
-  Hero,
+  Hero,   
   Badge,
   Title,
   Highlight,
